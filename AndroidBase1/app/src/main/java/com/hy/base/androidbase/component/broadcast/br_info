@@ -1,0 +1,57 @@
+ Android中的广播Broadcast详解
+ http://blog.csdn.net/jiangwei0910410003/article/details/19150705
+
+ 1.动态广播订阅和静态广播订阅
+ 静态广播订阅
+     send:
+     SendStaticBRActivity btn1 "com.broadcast.set5555.staticbroadcast"
+
+     注册：
+     <!-- 无序广播注册START  -->
+         <receiver android:name="com.hy.base.androidbase.component.broadcast.receiver.ReceiverBR">
+             <intent-filter >
+                 <action android:name="com.broadcast.set5555.staticbroadcast"/>
+             </intent-filter>
+         </receiver>
+         <!-- 无序广播注册END -->
+
+     receiver:
+     ReceiverBR
+
+ 动态广播订阅
+ send:
+ DynamicRegisterBroadcastActivity btn0 com.broadcast.set6666.dynamicbroadcast
+ 注册：
+ registerReceiver(receiver, counterActionFilter);
+ receiver:
+ ReceiverBR
+
+
+ 2. 有序广播和无序广播
+ 有序广播
+ send:
+  DynamicRegisterBroadcastActivity btn0 com.broadcast.set6666.dynamicbroadcast
+  注册：
+  registerReceiver(receiver, counterActionFilter);
+  receiver:
+  ReceiverBR
+
+  无序广播
+  send:
+  DynamicRegisterBroadcastActivity btn2 com.broadcast.disorder.staticbroadcast
+  注册：静态注册。android:priority属性值，值越大优先级越高
+  <receiver android:name="com.hy.base.androidbase.component.broadcast.receiver.SortBroadcastReceiverA">
+             <intent-filter android:priority="999">
+                 <action android:name="com.broadcast.disorder.staticbroadcast"/>
+             </intent-filter>
+         </receiver>
+
+         <receiver android:name="com.hy.base.androidbase.component.broadcast.receiver.SortBroadcastReceiverB">
+             <intent-filter android:priority="1000">
+                 <action android:name="com.broadcast.disorder.staticbroadcast"/>
+             </intent-filter>
+         </receiver>
+  receiver:
+  SortBroadcastReceiverA
+  SortBroadcastReceiverB
+

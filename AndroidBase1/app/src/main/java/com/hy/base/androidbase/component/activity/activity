@@ -1,0 +1,17 @@
+
+activity的生命周期（正常和非正常）
+
+
+activity的跳转：
+ 形式：1. 跳转到本应用的activity 2. 跳转到本设备其他应用的
+ 数据传递：
+
+
+activity的启动模式
+
+
+activity的debug
+
+
+
+
